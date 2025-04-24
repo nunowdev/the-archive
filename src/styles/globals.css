@@ -5,16 +5,33 @@
 }
 
 :root {
-  --metallic-gradient: linear-gradient(135deg, #a0a0a0, #e0e0e0, #a0a0a0);
+  --background: #ffffff;
+  --text: #000000;
+  --text-gradient: linear-gradient(
+    180deg,
+    rgba(217, 217, 217, 1) 0%,
+    rgba(120, 120, 120, 1) 50%,
+    rgba(77, 77, 77, 1) 100%
+  );
 }
 
-.metallic {
-  background: var(--metallic-gradient);
-  background-clip: text;
-  color: transparent;
-  -webkit-background-clip: text;
+/*
+This is necessary to prevent a flash of the incorrect theme.
+It happens because the user's theme detection happens client-side,
+while Next.js already performs a server-side render before the theme
+can be properly resolved. So we hide the body until the theme is resolved.
+*/
+
+html:not(.dark):not(.light) body {
+  visibility: hidden;
 }
 
-.background-dark {
-  background-color: #000;
+.dark {
+  --background: #000000;
+  --text: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
 }

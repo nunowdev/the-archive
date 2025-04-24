@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  color: white;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.header_link_left {
+  font-size: clamp(2rem, 5vw, 4rem);
+  cursor: pointer;
+  color: var(--text);
+  span {
+    font-size: clamp(1.8rem, 4vw, 3.8rem);
+    cursor: pointer;
+    color: var(--text);
+  }
+}
+
+.header_link_right {
+  font-size: clamp(2rem, 5vw, 4rem);
+  cursor: pointer;
+  color: var(--text);
+}
+
+.theme_icon {
+  margin: 0 20px 0 20px;
+}
+
+@media (max-width: 500px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .header_link_right {
+    display: flex;
+    flex-direction: column;
+  }
+}
