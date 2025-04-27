@@ -1,0 +1,9 @@
+.sandpack_wrapper {
+  margin-top: 100px;
+  display: flex;
+}
+
+.sandpack_layout_wrapper {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,83 @@
+.component_selector {
+  margin-top: 50px;
+  width: 30%;
+  height: 50px;
+  background-color: #292929;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  border-radius: 8px;
+}
+
+.component_button {
+  display: flex;
+  align-items: center;
+}
+
+.component_name {
+  color: white;
+}
+
+.import_keyword {
+  color: var(--accent-color);
+}
+
+.import_name {
+  color: #82aaff;
+}
+
+.import_path {
+  color: #f78c6c;
+}
+
+.arrow_down {
+  position: absolute;
+  right: 20px;
+  color: white;
+  transition: all 350ms ease;
+}
+
+.chevron_open {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  border-radius: 8px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #292929;
+  border: 1px solid #444;
+  width: 100%;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 8px;
+  padding: 10px;
+  z-index: 10;
+}
+
+.dropdown ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown_item {
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown_item:hover {
+  transform: translateX(5px);
+  color: var(--accent-color);
+}

@@ -1,35 +1,51 @@
 'use client';
 
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/utils/useTheme';
-import { Sun, Moon } from 'lucide-react';
 import styles from './header.module.css';
 
 function Header() {
   const [theme, toggleTheme] = useTheme();
+  const [isFading, setIsFading] = useState(false);
+
+  const handleThemeToggle = () => {
+    setIsFading(true);
+    setTimeout(() => {
+      toggleTheme();
+      setIsFading(false);
+    }, 600); // 600ms for animation
+  };
+
   return (
-    <header className={styles.header}>
-      <div className={styles.header_link_left}>
-        <span>@</span>nunowdev
-      </div>
-      <div className={styles.header_link_right}>
-        docs
-        {theme === 'dark' ? (
-          <Sun
-            onClick={toggleTheme}
-            color="white"
-            size={36}
-            className={styles.theme_icon}
-          />
-        ) : (
-          <Moon
-            onClick={toggleTheme}
-            color="black"
-            size={36}
-            className={styles.theme_icon}
+    <>
+      <header className={styles.header}>
+        <div className={styles.link_left}>
+          <p>
+            <span>@</span>nunowdev
+          </p>
+        </div>
+        <div className={styles.link_right}>
+          <p>docs</p>
+          <p onClick={handleThemeToggle} style={{ cursor: 'pointer' }}>
+            {theme === 'dark' ? '#000' : '#fff'}
+          </p>
+        </div>
+      </header>
+
+      {/* Global Fade Animation */}
+      <AnimatePresence>
+        {isFading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
+            className="fade-overlay"
           />
         )}
-      </div>
-    </header>
+      </AnimatePresence>
+    </>
   );
 }
 

@@ -13,6 +13,12 @@
     rgba(120, 120, 120, 1) 50%,
     rgba(77, 77, 77, 1) 100%
   );
+  --accent-color: #a259ff;
+}
+
+::selection {
+  background-color: var(--accent-color);
+  color: black;
 }
 
 /*
@@ -34,4 +40,15 @@ html:not(.dark):not(.light) body {
 body {
   background: var(--background);
   color: var(--text);
+}
+
+.fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 9999;
+  pointer-events: none;
 }

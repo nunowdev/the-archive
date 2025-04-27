@@ -5,15 +5,13 @@ function Hero() {
   return (
     <section className={styles.hero}>
       <Header />
-      <div className={styles.hero_middle}>
-        <h1 className={styles.hero_slogan}>
-          A clean space for creative chaos.
-        </h1>
-        <p className={styles.hero_description}>
+      <div className={styles.middle}>
+        <h1 className={styles.slogan}>A clean space for creative chaos.</h1>
+        <p className={styles.description}>
           totally not a chat-gpt created slogan :)
         </p>
       </div>
-      <div className={`${styles.hero_title}`}>the archive</div>
+      <div className={`${styles.title}`}>the archive</div>
     </section>
   );
 }
