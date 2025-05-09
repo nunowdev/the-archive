@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './component-selector.module.css';
-import { ShowcaseProps } from '@/ui/showcase/showcase';
 
-export function ComponentSelector({ components }: ShowcaseProps) {
+export function ComponentSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<string>('Button');
+  const components = ['Button', 'Input', 'Select', 'Checkbox', 'Radio'];
 
   const handleToggle = () => {
     setIsOpen((prev) => !prev);

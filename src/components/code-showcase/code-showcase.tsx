@@ -1,42 +1,49 @@
 'use client';
 
-import {
-  SandpackCodeEditor,
-  SandpackLayout,
-  SandpackPreview,
-  SandpackProvider,
-} from '@codesandbox/sandpack-react';
-import { atomDark } from '@codesandbox/sandpack-themes';
-import styles from './code-showcase.module.css';
+import { SandpackWrapperProps } from '@/utils/sandpackWrapper';
+import dynamic from 'next/dynamic';
 
-interface CodeShowcaseProps {
-  componentCode: string;
+// import SandpackWrapper from '@/utils/sandpackWrapper';
+const SandpackWrapper = dynamic(() => import('@/utils/sandpackWrapper'), {
+  ssr: false,
+});
+
+export default function CodeShowcase({ activeFile }: SandpackWrapperProps) {
+  const tsxCode = `
+import React from 'react';
+import styles from './MyComponent.module.css';
+
+const MyComponent: React.FC = () => {
+  return <div className={styles.box}>Hello TypeScript + Sandpack!</div>;
+};
+
+export default MyComponent;
+`;
+
+  const cssCode = `
+.box {
+  background-color: lightblue;
+  padding: 20px;
+  border-radius: 8px;
 }
+`;
 
-export default function CodeShowcase({ componentCode }: CodeShowcaseProps) {
+  const testCode = `
+import { render, screen } from "@testing-library/react";
+import MyComponent from "./App";
+
+test("renders component", () => {
+  render(<MyComponent />);
+  expect(screen.getByText(/hello typescript/i)).toBeInTheDocument();
+});
+`;
+
   return (
-    <div className={styles.sandpack_wrapper}>
-      <SandpackProvider
-        template="react"
-        theme={atomDark}
-        files={{
-          '/App.js': componentCode,
-        }}
-      >
-        <div className={styles.sandpack_layout_wrapper}>
-          <SandpackLayout>
-            <SandpackPreview
-              showOpenInCodeSandbox={false}
-              showRefreshButton={false}
-            />
-            <SandpackCodeEditor
-              readOnly={true}
-              showReadOnly={false}
-              showRunButton={false}
-            />
-          </SandpackLayout>
-        </div>
-      </SandpackProvider>
-    </div>
+    <SandpackWrapper
+      tsxCode={tsxCode}
+      cssCode={cssCode}
+      testCode={testCode}
+      activeFile={activeFile}
+    />
   );
 }

@@ -22,3 +22,7 @@
     color: var(--accent-color);
   }
 }
+
+.showcase .code_showcase {
+  border: 1px solid red;
+}
