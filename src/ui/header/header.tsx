@@ -26,7 +26,6 @@ function Header() {
           </p>
         </div>
         <div className={styles.link_right}>
-          <p>docs</p>
           <p onClick={handleThemeToggle} style={{ cursor: 'pointer' }}>
             {theme === 'dark' ? '#000' : '#fff'}
           </p>

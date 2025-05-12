@@ -23,6 +23,19 @@
   }
 }
 
-.showcase .code_showcase {
+.showcase_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.showcase_wrapper {
+  margin: 0 50px;
+}
+
+.component_showcase {
+  width: 500px;
+  height: 500px;
   border: 1px solid red;
 }
